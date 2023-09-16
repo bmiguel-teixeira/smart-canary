@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-generator
+  labels:
+    app: load-generator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: load-generator
+  template:
+    metadata:
+      labels:
+        app: load-generator
+    spec:
+      containers:
+      - name: bombardier
+        image: alpine/bombardier
+        args:
+        - -c
+        - "25" 
+        - -n
+        - "1000000000"
+        - http://smart-canary.default.svc.cluster.local:8080/hello-world
+        resources:
+          requests: 
+            cpu: 100m
+            memory: 512M

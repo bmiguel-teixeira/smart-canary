@@ -1,0 +1,44 @@
+
+
+ERROR_PERCENTAGE: "0"
+DELAY_IN_MS: "0"
+
+canary:
+  steps:
+  - setWeight: 25
+  - pause:  {duration: 30s}
+  - analysis:
+      templates:
+      - templateName: http-success-rate
+        clusterScope: false
+      args: 
+      - name: app-name
+        value: smart-canary
+      - name: pod-stage
+        value: "(canary)"
+      - name: success-status-code
+        value: "(200)"
+      - name: success-threshold
+        value: "0.95"
+      - name: failure-threshold
+        value: "0.75"
+  - setWeight: 50
+  - pause: {duration: 30s}
+  - analysis:
+      templates:
+      - templateName: http-success-rate
+        clusterScope: false
+      args: 
+      - name: app-name
+        value: smart-canary
+      - name: pod-stage
+        value: "(canary)"
+      - name: success-status-code
+        value: "(200)"
+      - name: success-threshold
+        value: "0.95"
+      - name: failure-threshold
+        value: "0.75"
+  - setWeight: 75
+  - pause: {duration: 30s}
+  - setWeight: 100
