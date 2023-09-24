@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: smart-canary
+  labels:
+    app.kubernetes.io/instance: smart-canary
+spec:
+  endpoints:
+  - path: /metrics
+    port: metrics
+    interval: 1s
+    relabelings:
+    - regex: (.*)
+      sourceLabels:
+        - __meta_kubernetes_pod_label_stage
+      targetLabel: stage
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app: server

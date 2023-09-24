@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: smart-canary
+  labels:
+    app.kubernetes.io/instance: smart-canary
+spec:
+  replicas: 5
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: smart-canary
+  template:
+    metadata:
+      labels:
+        app: smart-canary
+    spec:
+      containers:
+      - name: smart-canary
+        image: server:1.0
+        env:
+        - name: ERROR_PERCENTAGE
+          value: "{{ $.Values.ERROR_PERCENTAGE }}"
+        - name: DELAY_IN_MS
+          value: "{{ $.Values.DELAY_IN_MS }}"
+        ports:
+        - containerPort: 8080
+  strategy:
+    canary:
+      stableMetadata:
+        labels:
+          stage: stable
+      canaryMetadata:
+        labels:
+          stage: canary
+    {{- toYaml $.Values.canary | nindent 6}}
