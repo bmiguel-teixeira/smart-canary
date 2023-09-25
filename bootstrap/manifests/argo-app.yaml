@@ -12,6 +12,10 @@ spec:
     path: client-charts
     repoURL: https://github.com/bmiguel-teixeira/smart-canary
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
