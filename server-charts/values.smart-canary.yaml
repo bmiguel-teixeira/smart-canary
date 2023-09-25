@@ -1,7 +1,6 @@
 
 
 ERROR_PERCENTAGE: "0"
-DELAY_IN_MS: "0"
 
 canary:
   steps:
