@@ -20,7 +20,7 @@ install:
 	helm template server-charts/ | kubectl apply -f -
 
 all: bootstrap setup build install
-	echo done
+	kubectl delete pods -l app.kubernetes.io/instance=prom-kube-prometheus-stack-prometheus --force
 
 destroy:
 	kind delete cluster --name smart-canary

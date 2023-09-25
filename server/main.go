@@ -52,14 +52,14 @@ func helloWorld(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("500 - BOOM!"))
 
-		fmt.Println("500")
+		fmt.Printf("%s - 500\n", time.Now())
 	} else {
 		httpRequestsTotal.WithLabelValues("GET", "200", "hello-world").Inc()
 		httpResponseSeconds.WithLabelValues("GET", "200", "hello-world").Observe(time.Since(start).Seconds())
 
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Hello World"))
-		fmt.Println("200")
+		fmt.Printf("%s - 200\n", time.Now())
 	}
 }
 
