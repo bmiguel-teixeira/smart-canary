@@ -26,7 +26,7 @@ spec:
         address: http://prom-kube-prometheus-stack-prometheus.default.svc.cluster.local:9090
         query: |
           {{`
-          sum(irate(http_requests_total{job="{{ args.app-name }}", stage=~"{{ args.pod-stage }}", statusCode=~"{{ args.success-status-code }}"}[5m]))
+          sum(irate(http_requests_total{job="{{ args.app-name }}", stage=~"{{ args.pod-stage }}", statusCode=~"{{ args.success-status-code }}"}[1m]))
           /
-          sum(irate(http_requests_total{job="{{ args.app-name }}", stage=~"{{ args.pod-stage }}"}[5m]))
+          sum(irate(http_requests_total{job="{{ args.app-name }}", stage=~"{{ args.pod-stage }}"}[1m]))
           `}}

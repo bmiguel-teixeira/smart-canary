@@ -21,7 +21,7 @@ canary:
       - name: success-threshold
         value: "0.95"
       - name: failure-threshold
-        value: "0.75"
+        value: "0.70"
   - setWeight: 50
   - pause: {duration: 30s}
   - analysis:
@@ -38,7 +38,7 @@ canary:
       - name: success-threshold
         value: "0.95"
       - name: failure-threshold
-        value: "0.75"
+        value: "0.70"
   - setWeight: 75
   - pause: {duration: 30s}
   - setWeight: 100
