@@ -19,8 +19,8 @@ canary:
         value: "(200)"
       - name: success-threshold
         value: "0.95"
-      - name: pod-stage
-        value: "(canary)"
+      - name: failure-threshold
+        value: "0.95"
   - setWeight: 50
   - pause: {duration: 30s}
   - analysis:
@@ -36,8 +36,8 @@ canary:
         value: "(200)"
       - name: success-threshold
         value: "0.95"
-      - name: pod-stage
-        value: "(canary)"
+      - name: failure-threshold
+        value: "0.95"
   - setWeight: 75
   - pause: {duration: 30s}
   - setWeight: 100
