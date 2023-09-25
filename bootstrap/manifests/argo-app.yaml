@@ -11,7 +11,7 @@ spec:
   source:
     path: client-charts
     repoURL: https://github.com/bmiguel-teixeira/smart-canary
-    targetRevision: HEAD
+    targetRevision: demo
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -25,4 +25,4 @@ spec:
   source:
     path: server-charts
     repoURL: https://github.com/bmiguel-teixeira/smart-canary
-    targetRevision: HEAD
+    targetRevision: demo

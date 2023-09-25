@@ -1,6 +1,6 @@
 
 
-ERROR_PERCENTAGE: "0"
+ERROR_PERCENTAGE: "25"
 DELAY_IN_MS: "0"
 
 canary:
