@@ -6,9 +6,9 @@ DELAY_IN_MS: "0"
 canary:
   steps:
   - setWeight: 25
-  - pause:  {duration: 15s}
+  - pause:  {duration: 30s}
   - setWeight: 50
-  - pause: {duration: 15s}
+  - pause: {duration: 30s}
   - setWeight: 75
-  - pause: {duration: 15s}
+  - pause: {duration: 30s}
   - setWeight: 100
