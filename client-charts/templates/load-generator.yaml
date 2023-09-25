@@ -20,7 +20,7 @@ spec:
         args:
         - /bin/sh
         - -c
-        - "echo 'GET http://smart-canary.default.svc.cluster.local:8080/hello-world' | vegeta attack -rate=20 -duration=1h" 
+        - "echo 'GET http://smart-canary.default.svc.cluster.local:8080/hello-world' | vegeta attack -rate=100 -duration=1h" 
         resources:
           requests: 
             cpu: 100m
