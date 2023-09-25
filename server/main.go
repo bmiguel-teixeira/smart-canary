@@ -45,7 +45,7 @@ func init() {
 func helloWorld(w http.ResponseWriter, req *http.Request) {
 	start := time.Now()
 	n := rand.Intn(100)
-	if n <= ERROR_PERCENTAGE {
+	if n < ERROR_PERCENTAGE {
 		httpRequestsTotal.WithLabelValues("GET", "500", "hello-world").Inc()
 		httpResponseSeconds.WithLabelValues("GET", "500", "hello-world").Observe(time.Since(start).Seconds())
 
