@@ -40,4 +40,19 @@ canary:
         value: "0.95"
   - setWeight: 75
   - pause: {duration: 30s}
+  - analysis:
+      templates:
+      - templateName: http-success-rate
+        clusterScope: false
+      args: 
+      - name: app-name
+        value: smart-canary
+      - name: pod-stage
+        value: "(canary)"
+      - name: success-status-code
+        value: "(200)"
+      - name: success-threshold
+        value: "0.95"
+      - name: failure-threshold
+        value: "0.95"
   - setWeight: 100
